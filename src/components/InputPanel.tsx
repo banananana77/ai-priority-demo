@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Task } from "@/types";
 
@@ -72,7 +72,6 @@ export default function InputPanel({ tasks, onChange }: InputPanelProps) {
 
   return (
     <div className="space-y-4">
-      {/* Header */}
       <div className="pb-3 border-b border-slate-200">
         <div className="flex items-center gap-2 mb-1">
           <div className="w-1.5 h-5 bg-slate-800 rounded-full" />
@@ -85,13 +84,11 @@ export default function InputPanel({ tasks, onChange }: InputPanelProps) {
         </p>
       </div>
 
-      {/* Task Cards */}
       {tasks.map((task, index) => (
         <div
           key={task.id}
           className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden transition-shadow hover:shadow-md"
         >
-          {/* Card Header */}
           <div className="bg-slate-800 px-4 py-2.5 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="text-[10px] font-bold text-slate-400 tracking-widest">
@@ -106,13 +103,12 @@ export default function InputPanel({ tasks, onChange }: InputPanelProps) {
                 onClick={() => removeTask(index)}
                 className="text-slate-500 hover:text-white text-xs transition-colors"
               >
-                ✕ 削除
+                削除
               </button>
             )}
           </div>
 
           <div className="p-4 space-y-4">
-            {/* Business Name */}
             <div>
               <label className="text-xs font-semibold text-slate-600 tracking-wide uppercase block mb-1.5">
                 業務名
@@ -126,7 +122,6 @@ export default function InputPanel({ tasks, onChange }: InputPanelProps) {
               />
             </div>
 
-            {/* Effort & Frequency row */}
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <label className="text-xs font-semibold text-slate-600 tracking-wide uppercase block mb-1.5">
@@ -137,9 +132,9 @@ export default function InputPanel({ tasks, onChange }: InputPanelProps) {
                   onChange={(e) => updateTask(index, "effort", e.target.value)}
                   className="w-full px-3 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-400 bg-white text-slate-800 cursor-pointer"
                 >
-                  <option value="low">低（〜30分）</option>
-                  <option value="medium">中（〜2時間）</option>
-                  <option value="high">高（2時間〜）</option>
+                  <option value="low">低（30分以内）</option>
+                  <option value="medium">中（2時間以内）</option>
+                  <option value="high">高（2時間超）</option>
                 </select>
               </div>
               <div>
@@ -148,9 +143,7 @@ export default function InputPanel({ tasks, onChange }: InputPanelProps) {
                 </label>
                 <select
                   value={task.frequency}
-                  onChange={(e) =>
-                    updateTask(index, "frequency", e.target.value)
-                  }
+                  onChange={(e) => updateTask(index, "frequency", e.target.value)}
                   className="w-full px-3 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-400 bg-white text-slate-800 cursor-pointer"
                 >
                   <option value="monthly">月1回</option>
@@ -160,7 +153,6 @@ export default function InputPanel({ tasks, onChange }: InputPanelProps) {
               </div>
             </div>
 
-            {/* Sliders */}
             <div className="space-y-3 pt-1">
               <SliderField
                 label="属人度"
@@ -185,13 +177,12 @@ export default function InputPanel({ tasks, onChange }: InputPanelProps) {
         </div>
       ))}
 
-      {/* Add Button */}
       {tasks.length < 3 && (
         <button
           onClick={addTask}
           className="w-full py-3 border-2 border-dashed border-slate-300 rounded-xl text-sm font-semibold text-slate-500 hover:border-slate-500 hover:text-slate-700 hover:bg-slate-50 transition-all"
         >
-          ＋ 業務を追加（{tasks.length}/3）
+          + 業務を追加（{tasks.length}/3）
         </button>
       )}
     </div>
