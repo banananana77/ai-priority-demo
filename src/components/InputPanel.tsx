@@ -26,7 +26,7 @@ const SliderField = ({
   label: string;
   value: number;
   onChange: (v: number) => void;
-  hint?: string;
+  hint?: boolean;
 }) => (
   <div className="space-y-1.5">
     <div className="flex justify-between items-center">
